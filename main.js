@@ -30,7 +30,7 @@ class Vector {
 }
 
 let currentDirection = new Vector(-1,0);
-
+let check = false
 
 
 
@@ -82,6 +82,7 @@ class Snake {
     }
 
     move(){
+        check = true
         this.clear()
         for (let i = this.body.length-1; i >= 1 ; i--) {
             this.body[i].x = this.body[i-1].x;
@@ -197,36 +198,40 @@ setInterval(() =>{
           }
       }
     }
-    ,20);
+    ,200);
 
 
 document.onkeydown = function (e){
-    switch (e.keyCode) {
-        case left:
-            if (currentDirection.x === 1) break;
-            player.speed = new Vector(-1,0);
-            currentDirection = new Vector(-1,0);
-            break;
-        case right:
-            if (currentDirection.x === -1) break;
-            player.speed = new Vector(1,0);
-            currentDirection = new Vector(1,0);
-            break;
-        case up:
-            if (currentDirection.y === 1) break;
-            player.speed = new Vector(0,-1);
-            currentDirection = new Vector(0,-1);
-            break;
-        case down:
-            if (currentDirection.y === -1) break;
-            player.speed = new Vector(0,1);
-            currentDirection = new Vector(0,1 );
-            break;
-        case tamdung:
-            pause()
-        default:
-            break;
+    if (check){
+        switch (e.keyCode) {
+            case left:
+                if (currentDirection.x === 1) break;
+                player.speed = new Vector(-1,0);
+                currentDirection = new Vector(-1,0);
+                break;
+            case right:
+                if (currentDirection.x === -1) break;
+                player.speed = new Vector(1,0);
+                currentDirection = new Vector(1,0);
+                break;
+            case up:
+                if (currentDirection.y === 1) break;
+                player.speed = new Vector(0,-1);
+                currentDirection = new Vector(0,-1);
+                break;
+            case down:
+                if (currentDirection.y === -1) break;
+                player.speed = new Vector(0,1);
+                currentDirection = new Vector(0,1 );
+                break;
+            case tamdung:
+                pause()
+            default:
+                break;
+        }
+        check =false;
     }
+
 }
 
 
