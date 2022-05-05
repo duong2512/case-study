@@ -20,9 +20,6 @@ let an = new Audio()
 an.src = "an.mp3"
 
 
-
-
-
 class Vector {
     x;
     y;
@@ -150,6 +147,10 @@ function reset(){
     player = new Snake();
     ctx.fillStyle = backGround ;
     ctx.fillRect(0,0,game,game);
+    diem=0
+    document.getElementById("diem").innerHTML = diem ;
+
+    player.draw()
     food.draw();
     food.clear();
     food.spawn();
@@ -182,7 +183,8 @@ setInterval(() =>{
                   food.clear();
                   food.spawn();
                   food.getRandomNumber();
-                  document.getElementById("diem").innerHTML = diem = 0;
+                  diem=0
+                  document.getElementById("diem").innerHTML = diem ;
 
               }
           }
@@ -195,7 +197,7 @@ setInterval(() =>{
           }
       }
     }
-    ,200);
+    ,20);
 
 
 document.onkeydown = function (e){
